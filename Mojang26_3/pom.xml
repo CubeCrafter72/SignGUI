@@ -4,22 +4,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>signgui-parent</artifactId>
-        <groupId>de.rapha149.signgui</groupId>
         <version>2.5.5</version>
+        <groupId>de.rapha149.signgui</groupId>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>signgui-1_21_R4</artifactId>
+    <artifactId>signgui-26_3-mojang</artifactId>
 
     <properties>
         <maven.deploy.skip>true</maven.deploy.skip>
     </properties>
 
     <dependencies>
+        <!-- plugins -> paper-nms -> init (https://github.com/Alvinn8/paper-nms-maven-plugin) -->
         <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot</artifactId>
-            <version>1.21.5-R0.1-SNAPSHOT</version>
+            <groupId>ca.bkaw</groupId>
+            <artifactId>paper-nms</artifactId>
+            <version>26.3.build.32-alpha</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -30,16 +31,27 @@
         </dependency>
     </dependencies>
 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>bytecode.space</id>
+            <url>https://repo.bytecode.space/repository/maven-public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.14.1</version>
                 <configuration>
-                    <source>21</source>
-                    <target>21</target>
+                    <release>25</release>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>ca.bkaw</groupId>
+                <artifactId>paper-nms-maven-plugin</artifactId>
+                <version>1.5</version>
             </plugin>
         </plugins>
     </build>

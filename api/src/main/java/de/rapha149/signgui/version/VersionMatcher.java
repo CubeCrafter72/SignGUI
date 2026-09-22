@@ -14,7 +14,7 @@ import java.util.Map;
 public class VersionMatcher {
 
     private static final Map<String, String> VERSIONS;
-    private static final String NEWEST_VERSION = "1_21_R5";
+    private static final String NEWEST_VERSION = "26_3";
 
     private static boolean initialized;
     private static VersionWrapper wrapper;
@@ -31,6 +31,13 @@ public class VersionMatcher {
         versions.put("1.21.6", "1_21_R5");
         versions.put("1.21.7", "1_21_R5");
         versions.put("1.21.8", "1_21_R5");
+        versions.put("1.21.9", "1_21_R5");
+        versions.put("1.21.10", "1_21_R5");
+        versions.put("1.21.11", "1_21_R5");
+        versions.put("26.1.1", "1_21_R5");
+        versions.put("26.1.2", "1_21_R5");
+        versions.put("26.2", "1_21_R5");
+        versions.put("26.3", "26_3");
         VERSIONS = Collections.unmodifiableMap(versions);
     }
 
@@ -85,6 +92,9 @@ public class VersionMatcher {
         } catch (ClassNotFoundException ignored) {
             return false;
         }
+
+        if (version.startsWith("26_"))
+            return true;
 
         final String[] versionNumbers = version.replace("R", "").split("_");
         int major = Integer.parseInt(versionNumbers[1]);
